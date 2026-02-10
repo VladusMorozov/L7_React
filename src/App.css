@@ -1,42 +1,182 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+}
+
+.page {
+  width: 100%;
+  min-height: 100vh;
+}
+
+.header {
+  background-color: #e9b5b5;
+  padding: 15px 0;
+  display: flex;
+  justify-content: center;
+  gap: 80px;
+  font-weight: 500;
+}
+
+.header div {
+  cursor: pointer;
+}
+
+.content {
+  width: 900px;
+  margin: 50px auto;
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+th, td {
+  border: 1px solid #999;
+  padding: 10px;
+  text-align: center;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+th {
+  background-color: #f4bcbc;
+  font-weight: 600;
 }
 
-.card {
-  padding: 2em;
+.add-btn {
+  margin-top: 30px;
+  padding: 10px 20px;
+  background-color: #e9b5b5;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
 }
 
-.read-the-docs {
-  color: #888;
+.add-btn:hover {
+  opacity: 0.8;
+}
+
+
+.status-active {
+  background-color: #f4bcbc;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.status-done {
+  background-color: #b7e6a5;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.status-cancel {
+  background-color: #f3e49f;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.15);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-box {
+  width: 800px;
+  background: #f8f8f8;
+  border: 3px solid #e7b3b3;
+  border-radius: 12px;
+  padding: 40px 60px;
+  position: relative;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 50px;
+}
+
+.modal-header h2 {
+  margin: 0;
+  font-size: 26px;
+}
+
+.close-btn {
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.form-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 35px;
+}
+
+.form-row label {
+  width: 150px;
+  font-size: 16px;
+}
+
+.form-row input,
+.form-row select {
+  flex: 1;
+  padding: 12px;
+  border: 1px solid #e7b3b3;
+  border-radius: 4px;
+  background: white;
+}
+
+.btn-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.btn-wrapper button {
+  background: #e7b3b3;
+  border: none;
+  padding: 12px 40px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.btn-wrapper button:hover {
+  opacity: 0.9;
+}
+
+.error {
+  color: red;
+  text-align: center;
+}
+
+.modal-content {
+  background: white;
+  padding: 30px;
+  width: 400px;
+  border: 2px solid #e9b5b5;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.modal-content input,
+.modal-content select {
+  padding: 8px;
+  border: 1px solid #ccc;
+}
+
+.modal-content button {
+  padding: 8px;
+  border: none;
+  background-color: #e9b5b5;
+  cursor: pointer;
 }

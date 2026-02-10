@@ -1,5 +1,10 @@
 import { useState } from "react";
-import { v4 as uuidv4 } from "uuid";
+
+function getStatusClass(status) {
+  if (status === "Активная задача") return "status-active";
+  if (status === "Задача выполнена") return "status-done";
+  return "status-cancel";
+}
 
 function AddTaskModal({ close, addTask }) {
   const [description, setDescription] = useState("");
@@ -9,53 +14,66 @@ function AddTaskModal({ close, addTask }) {
 
   const handleSubmit = () => {
     if (!description || !status || !deadline) {
-      setError("Все поля обязательны");
+      setError("Заполните все поля");
       return;
     }
 
     addTask({
-      id: uuidv4(),
+      id: crypto.randomUUID(),
       description,
       status,
-      deadline
+      deadline,
     });
 
     close();
   };
 
   return (
-    <div className="modal">
-      <div className="modal-content">
+    <div className="modal-box">
+      <div className="modal-header">
         <h2>Добавить новую задачу</h2>
+        <span className="close-btn" onClick={close}>
+          ✕
+        </span>
+      </div>
 
+      <div className="form-row">
+        <label>Описание</label>
         <input
-          placeholder="Описание"
+          placeholder="Введите описание"
           value={description}
-          onChange={e => setDescription(e.target.value)}
+          onChange={(e) => setDescription(e.target.value)}
         />
+      </div>
 
-        <select
-          value={status}
-          onChange={e => setStatus(e.target.value)}
-        >
-          <option>Активная задача</option>
-          <option>Задача выполнена</option>
-          <option>Задача отменена</option>
-        </select>
+      <div className="form-row">
+        <label>Статус</label>
+        <div className="status-select-wrapper">
+          <select
+            value={status}
+            onChange={(e) => setStatus(e.target.value)}
+          >
+            <option>Активная задача</option>
+            <option>Задача выполнена</option>
+            <option>Задача отменена</option>
+          </select>
+          <span className={getStatusClass(status)}>{status}</span>
+        </div>
+      </div>
 
+      <div className="form-row">
+        <label>Дедлайн</label>
         <input
           type="date"
           value={deadline}
-          onChange={e => setDeadline(e.target.value)}
+          onChange={(e) => setDeadline(e.target.value)}
         />
+      </div>
 
-        {error && <p className="error">{error}</p>}
+      {error && <p className="error">{error}</p>}
 
-        <button onClick={handleSubmit}>
-          Создать задачу
-        </button>
-
-        <button onClick={close}>X</button>
+      <div className="btn-wrapper">
+        <button onClick={handleSubmit}>Добавить задачу</button>
       </div>
     </div>
   );
